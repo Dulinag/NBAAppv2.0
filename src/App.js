@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import playerNames from './playerNames.json';
 
 import playerStats from './playerStats.json';
@@ -27,26 +29,23 @@ function App() {
           return ( 
             <>
             {playerInfo !== undefined ? 
-            <div className="col" key={index}>
-             
-              <div className="card" onClick={() => handlePlayerClick(player)}>
-             
-                <div className="card-body">
-
-                  <h5 className="card-title">{playerInfo.first_name + ' ' + playerInfo.last_name}</h5> 
-                   <p className="card-text">{playerInfo.team.full_name} </p>
-
-                </div> 
-               
-              
-                
-              </div>  
+          <div className="col" key={index}>
+          <div className="card" onClick={() => handlePlayerClick(player)}>
+            <div className="card-body">
+              <h5 className="card-title">{playerInfo.first_name + ' ' + playerInfo.last_name}</h5> 
+              <Link to="/Players"></Link>
+              <p className="card-text">{playerInfo.team.full_name} </p>
             </div>
+          </div>
+        </div>
+        
             : null}
             </>
+           
           );
         })}
       </div>
+      
       {selectedPlayer && (
         <div className="mt-4">
           <h2>{selectedPlayer}</h2>
