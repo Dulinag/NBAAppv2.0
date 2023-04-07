@@ -1,7 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import * as React from 'react';
-import App from "../App";
-import PortTracker from "../components/PortBuilder/PortTracker";
+import App from "../src/App";
+import Player from "../src/Players"
 
 const MainRoutes = () => {
     // Check if user is currently logged in, if not redirect to login page
@@ -14,7 +14,7 @@ const MainRoutes = () => {
         },
         {
             path: '/player-card',
-            element: <PlayerCard/> 
+            element: <Player/> 
         }
     ])
 }

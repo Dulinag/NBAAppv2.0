@@ -1,11 +1,26 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import {Box, Collapse} from '@mui/material';
 import playerNames from './playerNames.json';
-
+import styled from 'styled-components';
 import playerStats from './playerStats.json';
 
 import 'bootstrap/dist/css/bootstrap.css';
+
+
+const DropDownSection = styled.div`
+margin: .5rem;
+width: 100%;
+/* flex-direction: column; */
+`
+
+const DropDownInfoSection = styled.div`
+width: 90%;
+display: flex;
+flex-direction: row;
+flex-wrap:wrap;
+justify-content: space-between;
+`
 
 function App() {
 
@@ -13,10 +28,9 @@ function App() {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   const handlePlayerClick = (player) => {
-
     setSelectedPlayer(player);
   }
-  console.log(playerStats)
+  console.log(selectedPlayer)
   return (
     <div className="container">
       <h1 className="my-4">List of NBA Players</h1>
@@ -32,9 +46,28 @@ function App() {
           <div className="col" key={index}>
           <div className="card" onClick={() => handlePlayerClick(player)}>
             <div className="card-body">
-              <h5 className="card-title">{playerInfo.first_name + ' ' + playerInfo.last_name}</h5> 
-              <Link to="/Players"></Link>
+              
+              <Link to="/player-card">
+                <h5 className="card-title">{playerInfo.first_name + ' ' + playerInfo.last_name}</h5> 
+              </Link>
               <p className="card-text">{playerInfo.team.full_name} </p>
+              <Collapse in={open} timeout="auto" unmountOnExit>
+              <Box sx={{ margin: 1, width:'100%',  display: 'flex',flexDirection:'column'}}>
+                  <DropDownSection>title
+                  </DropDownSection>
+                  <DropDownSection>
+                    Fee Model:<br/>
+                   
+                  </DropDownSection>
+               
+                 <DropDownInfoSection>
+                  <div>here</div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                 </DropDownInfoSection>
+              </Box>
+            </Collapse>
             </div>
           </div>
         </div>
@@ -44,9 +77,9 @@ function App() {
            
           );
         })}
-      </div>
+       </div>
       
-      {selectedPlayer && (
+      {/* {selectedPlayer && (
         <div className="mt-4">
           <h2>{selectedPlayer}</h2>
           <ul>
@@ -55,7 +88,7 @@ function App() {
             ))}
           </ul>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

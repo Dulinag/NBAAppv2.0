@@ -26,7 +26,7 @@ const RowContainer = styled.div`
   margin: auto;
 `
 
-function App() {
+function Players() {
 
     const [players, setPlayers] = useState(playerStats);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
@@ -45,18 +45,16 @@ function App() {
         
         
         <RowContainer>
-        return (
-    <div className="container mt-4">
+          <div className="container mt-4">
 
-      <h1>{playerStats.data[0].first_name} {playerStats.data[0].last_name}</h1>
+            <h1>{playerStats.data[0].first_name} {playerStats.data[0].last_name}</h1>
 
-      <h4>Position: {playerStats.data[0].position}</h4>
+            <h4>Position: {playerStats.data[0].position}</h4>
 
-      <h4>Team: {playerStats.data[0].team.full_name}</h4>
-      
-    </div>
-  );
-}
+            <h4>Team: {playerStats.data[0].team.full_name}</h4>
+            
+          </div>
+
 
         </RowContainer>
         
@@ -70,4 +68,4 @@ function App() {
 
 }
 
-export default App;
+export default Players;
