@@ -38,31 +38,18 @@ function Players() {
     console.log(playerStats)
     return (
 
-
-
-        <>
-        
-        
         
         <RowContainer>
           <div className="container mt-4">
 
-            <h1>{playerStats.data[0].first_name} {playerStats.data[0].last_name}</h1>
+            <h1>First Name Last Name</h1>
 
-            <h4>Position: {playerStats.data[0].position}</h4>
+            <h4>Position: PG</h4>
 
-      <h4>Team: {playerStats.data[0].team.full_name}</h4>
-      
-    </div>
-  );
-
-
+            <h4>Team: Knicks</h4>
+            
+          </div>
         </RowContainer>
-        
-        
-        
-        
-        </>
 
 
     );
