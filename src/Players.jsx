@@ -5,6 +5,7 @@ import playerStats from './playerStats.json';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 
 
 const RowContainer = styled.div`
@@ -27,6 +28,9 @@ const RowContainer = styled.div`
 `
 
 function Players() {
+
+  const {id} = useParams()
+  console.log(id)
 
     const [players, setPlayers] = useState(playerStats);
     const [selectedPlayer, setSelectedPlayer] = useState(null);

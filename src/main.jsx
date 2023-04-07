@@ -13,7 +13,7 @@ const MainRoutes = () => {
             element: <App/>
         },
         {
-            path: '/player-card',
+            path: '/:id',
             element: <Player/> 
         }
     ])

@@ -43,7 +43,7 @@ console.log(playerInfo)
           <div className="card" >
             <div className="card-body">
               
-              <Link to="/player-card">
+              <Link to={`/${playerInfo.id}`}>
                 <h5 className="card-title">{playerInfo.first_name + ' ' + playerInfo.last_name}</h5> 
               </Link>
               <p className="card-text">{playerInfo.team.full_name} </p>
