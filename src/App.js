@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {Box, Collapse} from '@mui/material';
+
 import playerNames from './playerNames.json';
 import styled from 'styled-components';
 import playerStats from './playerStats.json';
 
 import 'bootstrap/dist/css/bootstrap.css';
-
+import Button from 'react-bootstrap/Button';
+import Collapse from 'react-bootstrap/Collapse';
+import PlayerCard from './PlayersCard';
 
 const DropDownSection = styled.div`
 margin: .5rem;
@@ -26,6 +28,8 @@ function App() {
 
   const [players, setPlayers] = useState(playerStats);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [open, setOpen] = useState(false);
+
 
   const handlePlayerClick = (player) => {
     setSelectedPlayer(player);
@@ -43,35 +47,8 @@ function App() {
           return ( 
             <>
             {playerInfo !== undefined ? 
-          <div className="col" key={index}>
-          <div className="card" onClick={() => handlePlayerClick(player)}>
-            <div className="card-body">
-              
-              <Link to="/player-card">
-                <h5 className="card-title">{playerInfo.first_name + ' ' + playerInfo.last_name}</h5> 
-              </Link>
-              <p className="card-text">{playerInfo.team.full_name} </p>
-              <Collapse in={open} timeout="auto" unmountOnExit>
-              <Box sx={{ margin: 1, width:'100%',  display: 'flex',flexDirection:'column'}}>
-                  <DropDownSection>title
-                  </DropDownSection>
-                  <DropDownSection>
-                    Fee Model:<br/>
-                   
-                  </DropDownSection>
-               
-                 <DropDownInfoSection>
-                  <div>here</div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                 </DropDownInfoSection>
-              </Box>
-            </Collapse>
-            </div>
-          </div>
-        </div>
-        
+       
+              <PlayerCard playerInfo={playerInfo} key={index}/>
             : null}
             </>
            
