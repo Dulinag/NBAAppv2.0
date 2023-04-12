@@ -6,6 +6,10 @@
   height: 40vmin;
   pointer-events: none;
 }
+body {
+  background-image: url('/src/nabai.webp');
+  background-size: cover;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

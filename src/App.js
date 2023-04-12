@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import playerNames from './playerNames.json';
 import styled from 'styled-components';
 import playerStats from './playerStats.json';
-
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
 import PlayerCard from './PlayersCard';
+import TitleImage from './nbai2.webp'; 
 
 const DropDownSection = styled.div`
 margin: .5rem;
@@ -23,13 +24,22 @@ flex-direction: row;
 flex-wrap:wrap;
 justify-content: space-between;
 `
+const Image = styled.img`
+  width: 50%;
+  max-width: 500px;
+  margin-top: 2rem;
+  display: block;
+  margin: auto;
+`;
+
+
 
 function App() {
 
   const [players, setPlayers] = useState(playerStats);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [open, setOpen] = useState(false);
-
+  
 
   const handlePlayerClick = (player) => {
     setSelectedPlayer(player);
@@ -37,7 +47,13 @@ function App() {
   console.log(selectedPlayer)
   return (
     <div className="container">
-      <h1 className="my-4">List of NBA Players</h1>
+      
+      
+      <h1 class="text-center">Hoops For Ballers</h1>
+
+      <Image src={TitleImage} alt="Hoops For Ballers" />
+
+      <h1 className="my-4"></h1>
       
       <div className="row row-cols-2 row-cols-md-3 g-4">
         {playerStats.map((player, index) => {

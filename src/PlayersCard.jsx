@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import playerStats from './playerStats.json';
 import styled from 'styled-components';
@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
+import axios from 'axios';
 
 
 
@@ -22,6 +23,11 @@ display: flex;
 flex-direction: row;
 flex-wrap:wrap;
 justify-content: space-between;
+
+`
+const Stye1 = styled.div`
+text-allign: center;
+color:blue;
 `
 
 function PlayerCard({playerInfo}) {
@@ -37,6 +43,22 @@ console.log(playerInfo)
     setSelectedPlayer(player);
   }
   console.log(selectedPlayer)
+
+
+
+// React.useEffect(() =>{
+
+
+//     fetchApi();
+// },[]
+
+
+//)
+
+
+
+
+
           return ( 
             <>
           <div className="col" >
@@ -91,6 +113,8 @@ console.log(playerInfo)
             
             </div>
           </Collapse>
+          
+
              
             </div>
           </div>

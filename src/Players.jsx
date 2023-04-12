@@ -6,6 +6,7 @@ import playerStats from './playerStats.json';
 import 'bootstrap/dist/css/bootstrap.css';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 
 const RowContainer = styled.div`
@@ -26,8 +27,9 @@ const RowContainer = styled.div`
   
   margin: auto;
 `
+const api = axios.create({baseURL: `https://www.balldontlie.io/api/v1/`})
 
-function Players() {
+function Players(playerInfo) {
 
   const {id} = useParams()
   console.log(id)
@@ -40,6 +42,30 @@ function Players() {
       setSelectedPlayer(player);
     }
     console.log(playerStats)
+
+
+    const fetchApi = async () => {
+
+
+      await api.get(`season_averages?&player_ids[]={${id}}`, null,)
+  
+      .then((res)=>{ 
+          console.log(res)
+  
+      })
+      .catch((err)=>{
+          console.log(err)
+      })
+    }
+  
+  // React.useEffect(() =>{
+  
+  
+  //     fetchApi();
+  // },[]
+  
+  
+  //)
     return (
 
         
@@ -53,7 +79,16 @@ function Players() {
             <h4>Team: Knicks</h4>
             
           </div>
+
+
+          <button onClick={()=>fetchApi()}>
+
+
+            click
+          </button>
         </RowContainer>
+      
+        
 
 
     );
