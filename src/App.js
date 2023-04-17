@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
 import PlayerCard from './PlayersCard';
+import Card from 'react-bootstrap/Card';
 import TitleImage from './nbai2.webp'; 
 import {Col, Container, Form, Row } from "react-bootstrap";
 

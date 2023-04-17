@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
 import axios from 'axios';
 
-
+import Card from 'react-bootstrap/Card';
 
 
 const DropDownSection = styled.div`
@@ -61,7 +61,7 @@ console.log(playerInfo)
 
           return ( 
             <>
-          <div className="col" >
+          {/* <div className="col" >
           <div className="card" >
             <div className="card-body">
               
@@ -118,7 +118,61 @@ console.log(playerInfo)
              
             </div>
           </div>
-        </div>
+        </div> */}
+
+        <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Title>{playerInfo.first_name + ' ' + playerInfo.last_name}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{playerInfo.team.full_name}</Card.Subtitle>
+        <Card.Text>
+        <Button
+            onClick={() => setOpen(!open)}
+            aria-controls="example-collapse-text"
+            aria-expanded={open}
+          >
+            More Info
+          </Button>
+          <Collapse in={open}>
+            <div id="example-collapse-text">
+
+                <div>
+            {playerInfo.first_name} {playerInfo.last_name}
+
+            </div>
+
+            <div>
+
+            Height: {playerInfo.height_feet} {playerInfo.height_inches}
+
+            </div>
+
+            <div>
+
+                Weight: {playerInfo.weight_pounds} 
+
+            </div>
+
+            <div>
+                Position: {playerInfo.position}
+            </div>
+            <div>
+                Team: {playerInfo.team.full_name}
+            </div>
+            
+            Conference: {playerInfo.team.conference}
+
+            <div>
+
+            </div>
+            
+            
+            </div>
+          </Collapse>
+          
+        </Card.Text>
+        
+      </Card.Body>
+    </Card>
     
             </>
            
