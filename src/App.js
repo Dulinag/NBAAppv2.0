@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import playerNames from './playerNames.json';
@@ -61,6 +61,13 @@ flex-direction: column;
 align-items: center;
 
 `
+const PlayerListContainer = styled.div`
+display: flex;
+flex-direction: row;
+width: 50%;
+height:10vh;
+flex-wrap: wrap;
+`
 
 
 
@@ -70,12 +77,39 @@ function App() {
   const [players, setPlayers] = useState(playerStats);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [open, setOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredList, setFilteredList] = useState([]);
   
-
+  console.log(filteredList)
   const handlePlayerClick = (player) => {
     setSelectedPlayer(player);
   }
-  console.log(selectedPlayer)
+
+  const handleSearch = (value) => {
+    let string = value.toLowerCase()
+    setSearchTerm(string)
+    
+  }
+
+  useEffect(() => {
+    console.log(searchTerm)
+    let array = [];
+
+    playerStats.forEach((item) => {
+      if(item.data.length === 0){
+        console.log("catch")
+      }else {
+         let searchString = (item.data[0].first_name.toLowerCase() + " " + item.data[0].last_name.toLowerCase())
+         if(searchString.includes(searchTerm)){
+          array.push(item)
+         }
+      }
+     
+    })
+   setFilteredList(array)
+  }, [searchTerm])
+
+  // console.log(selectedPlayer)
   return (
     <PageContainer>
      
@@ -92,10 +126,11 @@ function App() {
                 placeholder="Search"
                 className="me-2 rounded-pill"
                 aria-label="Search"
+                onChange={(e) => handleSearch(e.target.value)}
               />
-              <Button className="rounded-pill" variant="outline-primary">
+              {/* <Button className="rounded-pill" variant="outline-primary">
                 Search
-              </Button>
+              </Button> */}
             </Form>
           </Col>
         </Row>
@@ -106,8 +141,13 @@ function App() {
       <Image src={TitleImage} alt="Hoops For Ballers" />
 
       
-      <div className="row row-cols-2 row-cols-md-3 g-4">
-        {playerStats.map((player, index) => {
+      <PlayerListContainer>
+      {/* div className="row row-cols-2 row-cols-md-3 g-4 */}
+
+        {
+          
+        
+        filteredList.map((player, index) => {
           let playerInfo = player.data[0]
           // console.log(player.data[0])
         //  player.data[0] === undefined ? console.log(player) : console.log(player.data[0].first_name)
@@ -121,7 +161,7 @@ function App() {
            
           );
         })}
-       </div>
+       </PlayerListContainer>
       
       {/* {selectedPlayer && (
         <div className="mt-4">
