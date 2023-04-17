@@ -28,28 +28,36 @@ justify-content: space-between;
 const Image = styled.img`
   width: 50%;
   max-width: 500px;
-  margin-top: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   display: block;
   margin: auto;
 `;
 
-const Searchbar = styled.div`
+const PageContainer = styled.div`
+display: flex;
+width: 100%;
+justify-content: center;
+flex-direction: column;
+padding: 2%;
+align-items: center;
+`
 
-  margin-top: 2rem;
-  display: flex;
-  margin: auto;
+// const Searchbar = styled.div`
 
-`;
+//   margin-top: 2rem;
+//   display: flex;
+//   margin: auto;
+
+// `;
 const Header = styled.div`
 
 display: flex;
 justify-content: center;
-width: 90%;
+width: 50%;
 height:auto;
-
-
-
-
+flex-direction: column;
+align-items: center;
 
 `
 
@@ -68,18 +76,15 @@ function App() {
   }
   console.log(selectedPlayer)
   return (
-    <div className="container">
+    <PageContainer>
      
         
         <Header>
-        <h1 >Hoops For Ballers</h1>
-        <Searchbar>
-        
-      
+          <h1>Hoops For Ballers</h1>
 
         <Container className="mt-5">
         <Row>
-          <Col sm={4}>
+          <Col >
             <Form className="d-flex">
               <Form.Control
                 type="search"
@@ -93,14 +98,12 @@ function App() {
             </Form>
           </Col>
         </Row>
-      </Container>
-      </Searchbar>
+        </Container>
 
-    </Header>
+      </Header>
 
       <Image src={TitleImage} alt="Hoops For Ballers" />
 
-      <h1 className="my-4"></h1>
       
       <div className="row row-cols-2 row-cols-md-3 g-4">
         {playerStats.map((player, index) => {
@@ -129,7 +132,7 @@ function App() {
           </ul>
         </div>
       )} */}
-    </div>
+    </PageContainer>
   );
 }
 
