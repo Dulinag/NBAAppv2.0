@@ -35,11 +35,11 @@ function PlayerCard({playerInfo}) {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [open, setOpen] = useState(false);
 
-console.log(playerInfo)
+// console.log(playerInfo)
   const handlePlayerClick = (player) => {
     setSelectedPlayer(player);
   }
-  console.log(selectedPlayer)
+
 
 
 

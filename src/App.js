@@ -95,7 +95,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(searchTerm)
+    
     let array = [];
 
     playerStats.forEach((item) => {

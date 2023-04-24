@@ -29,28 +29,38 @@ const RowContainer = styled.div`
 `
 const api = axios.create({baseURL: `https://www.balldontlie.io/api/v1/`})
 
-function Players(playerInfo) {
+function Players() {
 
   const {id} = useParams()
   console.log(id)
 
     const [players, setPlayers] = useState(playerStats);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
+    const [playerInfo, setPlayerInfo] = useState()
   
-    const handlePlayerClick = (player) => {
+    // const handlePlayerClick = (player) => {
   
-      setSelectedPlayer(player);
-    }
+    //   setSelectedPlayer(player);
+    // }
     console.log(playerInfo)
 
 
     const fetchApi = async () => {
 
 
-      await api.get(`season_averages?&player_ids[]={${id}}`, null,)
+      await api.get(`season_averages?&player_ids[]=${id}`, null,)
   
       .then((res)=>{ 
-          console.log(res)
+          console.log(res.data.data)
+          let player = res.data.data[0]
+          setSelectedPlayer(player)
+
+          api.get(`players/${id}`, null)
+          .then((res => {
+            setPlayerInfo(res.data)
+            console.log(res)
+          }))
+          .catch(err => console.log(err))
   
       })
       .catch((err)=>{
@@ -58,21 +68,20 @@ function Players(playerInfo) {
       })
     }
   
-  // React.useEffect(() =>{
+  React.useEffect(() =>{
+  
+      fetchApi();
+  },[]
   
   
-  //     fetchApi();
-  // },[]
-  
-  
-  //)
+  )
     return (
 
         
         <RowContainer>
           <div className="container mt-4">
 
-            <h1> firts</h1>
+            <h1>first</h1>
           
 
             <h4>Position: PG</h4>
