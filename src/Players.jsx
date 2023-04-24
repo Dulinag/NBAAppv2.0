@@ -10,7 +10,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 
+const Titlecontainer = styled.div`
 
+font-size: px50;
+
+`
 const RowContainer = styled.div`
   text-decoration: none;
   color: black;
@@ -81,17 +85,44 @@ function Players() {
 
         
         <RowContainer>
-          <div className="container mt-4">
-
-            <h1> firts</h1>
-          
-
-            <h4>Position: PG</h4>
-
-            <h4>Team: Knicks</h4>
+<Titlecontainer>
+          {playerInfo.first_name 
+          + " "
+          + playerInfo.last_name}
+          </Titlecontainer>
+        
+        <Table striped>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td colSpan={2}>Larry the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </Table>
 
             <h1><Link to="/">Go to Homepage</Link>   </h1>         
-          </div>
+    
           
 
 
