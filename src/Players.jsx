@@ -42,7 +42,7 @@ function Players() {
   
     //   setSelectedPlayer(player);
     // }
-    console.log(playerInfo)
+    console.log(selectedPlayer)
 
 
     const fetchApi = async () => {
