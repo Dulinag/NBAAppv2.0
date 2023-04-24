@@ -122,7 +122,9 @@ console.log(playerInfo)
 
         <Card style={{ width: '18rem' }}>
       <Card.Body>
+      <Link to={`/${playerInfo.id}`}>
         <Card.Title>{playerInfo.first_name + ' ' + playerInfo.last_name}</Card.Title>
+        </Link>
         <Card.Subtitle className="mb-2 text-muted">{playerInfo.team.full_name}</Card.Subtitle>
         <Card.Text>
         <Button

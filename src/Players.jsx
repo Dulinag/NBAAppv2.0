@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 
 const RowContainer = styled.div`
   text-decoration: none;
@@ -22,7 +22,7 @@ const RowContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background-color: lightblue;
+  text-align: center;
 
   
   margin: auto;
@@ -41,7 +41,7 @@ function Players(playerInfo) {
   
       setSelectedPlayer(player);
     }
-    console.log(playerStats)
+    console.log(playerInfo)
 
 
     const fetchApi = async () => {
@@ -72,20 +72,31 @@ function Players(playerInfo) {
         <RowContainer>
           <div className="container mt-4">
 
-            <h1>First Name Last Name</h1>
+            <h1> firts</h1>
+          
 
             <h4>Position: PG</h4>
 
             <h4>Team: Knicks</h4>
-            
+
+            <h1><Link to="/">Go to Homepage</Link>   </h1>         
+          </div>
+          
+
+
+ 
+
+          <div>
+
+
           </div>
 
-
+{/* 
           <button onClick={()=>fetchApi()}>
 
 
             click
-          </button>
+          </button> */}
         </RowContainer>
       
         
