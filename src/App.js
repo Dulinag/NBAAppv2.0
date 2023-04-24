@@ -64,9 +64,12 @@ align-items: center;
 const PlayerListContainer = styled.div`
 display: flex;
 flex-direction: row;
-width: 50%;
-height:10vh;
+justify-content: space-evenly;
+width: 90%;
+height:100vh;
 flex-wrap: wrap;
+overflow-y: scroll;
+border: 1px solid black;
 `
 
 
@@ -118,7 +121,7 @@ function App() {
           <h1>Hoops For Ballers</h1>
 
         <Container className="mt-5">
-        <Row>
+        <Row >
           <Col >
             <Form className="d-flex">
               <Form.Control

@@ -25,10 +25,7 @@ flex-wrap:wrap;
 justify-content: space-between;
 
 `
-const Stye1 = styled.div`
-text-allign: center;
-color:blue;
-`
+
 
 function PlayerCard({playerInfo}) {
 
