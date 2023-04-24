@@ -35,11 +35,11 @@ function PlayerCard({playerInfo}) {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [open, setOpen] = useState(false);
 
-console.log(playerInfo)
+// console.log(playerInfo)
   const handlePlayerClick = (player) => {
     setSelectedPlayer(player);
   }
-  console.log(selectedPlayer)
+
 
 
 
@@ -58,66 +58,9 @@ console.log(playerInfo)
 
           return ( 
             <>
-          {/* <div className="col" >
-          <div className="card" >
-            <div className="card-body">
-              
-              <Link to={`/${playerInfo.id}`}>
-                <h5 className="card-title">{playerInfo.first_name + ' ' + playerInfo.last_name}</h5> 
-              </Link>
-              <p className="card-text">{playerInfo.team.full_name} </p>
+         
 
-                  <Button
-            onClick={() => setOpen(!open)}
-            aria-controls="example-collapse-text"
-            aria-expanded={open}
-          >
-            More Info
-          </Button>
-          <Collapse in={open}>
-            <div id="example-collapse-text">
-
-                <div>
-            {playerInfo.first_name} {playerInfo.last_name}
-
-            </div>
-
-            <div>
-
-            Height: {playerInfo.height_feet} {playerInfo.height_inches}
-
-            </div>
-
-            <div>
-
-                Weight: {playerInfo.weight_pounds} 
-
-            </div>
-
-            <div>
-                Position: {playerInfo.position}
-            </div>
-            <div>
-                Team: {playerInfo.team.full_name}
-            </div>
-            
-            Conference: {playerInfo.team.conference}
-
-            <div>
-
-            </div>
-            
-            
-            </div>
-          </Collapse>
-          
-
-             
-            </div>
-          </div>
-        </div> */}
-
-        <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '18rem', marginBottom: "2.5%" }}>
       <Card.Body>
       <Link to={`/${playerInfo.id}`}>
         <Card.Title>{playerInfo.first_name + ' ' + playerInfo.last_name}</Card.Title>

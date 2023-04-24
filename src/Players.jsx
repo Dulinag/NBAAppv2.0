@@ -31,28 +31,38 @@ const RowContainer = styled.div`
 `
 const api = axios.create({baseURL: `https://www.balldontlie.io/api/v1/`})
 
-function Players(playerInfo) {
+function Players() {
 
   const {id} = useParams()
   console.log(id)
 
     const [players, setPlayers] = useState(playerStats);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
+    const [playerInfo, setPlayerInfo] = useState()
   
-    const handlePlayerClick = (player) => {
+    // const handlePlayerClick = (player) => {
   
-      setSelectedPlayer(player);
-    }
+    //   setSelectedPlayer(player);
+    // }
     console.log(playerInfo)
 
 
     const fetchApi = async () => {
 
 
-      await api.get(`season_averages?&player_ids[]={${id}}`, null,)
+      await api.get(`season_averages?&player_ids[]=${id}`, null,)
   
       .then((res)=>{ 
-          console.log(res)
+          console.log(res.data.data)
+          let player = res.data.data[0]
+          setSelectedPlayer(player)
+
+          api.get(`players/${id}`, null)
+          .then((res => {
+            setPlayerInfo(res.data)
+            console.log(res)
+          }))
+          .catch(err => console.log(err))
   
       })
       .catch((err)=>{
@@ -60,56 +70,33 @@ function Players(playerInfo) {
       })
     }
   
-  // React.useEffect(() =>{
+  React.useEffect(() =>{
+  
+      fetchApi();
+  },[]
   
   
-  //     fetchApi();
-  // },[]
-  
-  
-  //)
+  )
     return (
 
         
         <RowContainer>
-     
+          <div className="container mt-4">
 
-      
+            <h1> firts</h1>
+          
+
+            <h4>Position: PG</h4>
+
+            <h4>Team: Knicks</h4>
+
+            <h1><Link to="/">Go to Homepage</Link>   </h1>         
+          </div>
+          
+
 
  
-        
 
-          <Table striped bordered hover size="sm">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table>
- 
-    <h1><Link to="/">Go to Homepage</Link>   </h1>        
           <div>
 
 
