@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import playerNames from './playerNames.json';
-
+import './App.css';
 import playerStats from './playerStats.json';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -12,8 +12,8 @@ import Table from 'react-bootstrap/Table';
 
 const Titlecontainer = styled.div`
 
-font-size: px50;
-
+font-size: 50px;
+text-align:center;
 `
 const RowContainer = styled.div`
   text-decoration: none;
@@ -49,6 +49,8 @@ function Players() {
     //   setSelectedPlayer(player);
     // }
     console.log(playerInfo)
+    console.log(selectedPlayer)
+
 
 
     const fetchApi = async () => {
@@ -83,43 +85,61 @@ function Players() {
   )
     return (
 
-        
-        <RowContainer>
-<Titlecontainer>
-          {playerInfo.first_name 
-          + " "
-          + playerInfo.last_name}
+
+        <>
+        <Titlecontainer>
+
+          {
+          playerInfo ? playerInfo.first_name + ' ' + playerInfo.last_name: null
+          
+          }
           </Titlecontainer>
+        <RowContainer>
+
         
-        <Table striped>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table>
+          <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">asists</th>
+      <th scope="col">Blocks</th>
+      
+      <th scope="col">fg3_pct</th>
+      <th scope="col">fg3a</th>
+      <th scope="col">fg3m</th>
+      <th scope="col">fg_pct</th>
+      <th scope="col">fgm</th>
+       <th scope="col">ft_pct</th>
+      <th scope="col">fta</th>
+      <th scope="col">ftm</th>
+      <th scope="col">games_played</th>
+      <th scope="col">pf</th>
+      <th scope="col">pts</th>
+      <th scope="col">Rebounds</th>
+      <th scope="col">stl</th>
+      <th scope="col">Turnovers</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{selectedPlayer.ast}</th>
+      <td>{selectedPlayer.blk}</td>
+      
+      <td>{selectedPlayer.ast}</td>
+      <td>{selectedPlayer.ast}</td>
+      <td>{selectedPlayer.ast}</td>
+
+      <td>{selectedPlayer.ast}</td>
+      <td>{selectedPlayer.ast}</td>
+      <td>{selectedPlayer.ast}</td>
+      <td>{selectedPlayer.ast}</td>
+      <td>{selectedPlayer.ast}</td>
+      <td>{selectedPlayer.ast}</td>
+    </tr>
+ 
+ 
+  </tbody>
+</table>
 
             <h1><Link to="/">Go to Homepage</Link>   </h1>         
     
@@ -142,7 +162,7 @@ function Players() {
         </RowContainer>
       
         
-
+</>
 
     );
 
