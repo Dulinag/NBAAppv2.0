@@ -14,22 +14,53 @@ const Titlecontainer = styled.div`
 
 font-size: 50px;
 text-align:center;
+
+`
+const MiddleContent = styled.div`
+
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+`
+
+const PlayInfoDiv = styled.div`
+
+font-size: 20px;
+text-align:center;
+border: 1px black solid;
+background-color: white;
+
+width: 40%
+
+
+
+
+`
+
+const PlayerFlow = styled.div`
+
+
+
 `
 const RowContainer = styled.div`
   text-decoration: none;
   color: black;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
+  width: 80%;
   border: none;
   outline: none;
   font-size: 15px;
-  position: absolute;
+ 
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   text-align: center;
 
+ 
   
   margin: auto;
 `
@@ -53,22 +84,16 @@ function Players() {
 
 
 
-    const fetchApi = async () => {
+    const fetchApi =  () => {
 
 
-      await api.get(`season_averages?&player_ids[]=${id}`, null,)
-  
+       api.get(`season_averages?&player_ids[]=${id}`, null)
       .then((res)=>{ 
           console.log(res.data.data)
           let player = res.data.data[0]
           setSelectedPlayer(player)
 
-          api.get(`players/${id}`, null)
-          .then((res => {
-            setPlayerInfo(res.data)
-            console.log(res)
-          }))
-          .catch(err => console.log(err))
+        
   
       })
       .catch((err)=>{
@@ -79,14 +104,24 @@ function Players() {
   React.useEffect(() =>{
   
       fetchApi();
-  },[]
+  },[])
+
+
+  React.useEffect(() => {
+    api.get(`players/${id}`, null)
+    .then((res => {
+      setPlayerInfo(res.data)
+      console.log(res.data)
+    }))
+    .catch(err => console.log(err))
+  }, [selectedPlayer])
   
   
-  )
+  
     return (
 
 
-        <>
+        <MiddleContent>
         <Titlecontainer>
 
           {
@@ -94,9 +129,69 @@ function Players() {
           
           }
           </Titlecontainer>
+
+          <PlayInfoDiv>
+
+            <div>
+
+            
+
+          {
+           playerInfo ? 'Team: ' + playerInfo.team.full_name: null
+          
+          }
+
+
+
+            </div>
+
+            <div>
+
+
+
+{
+playerInfo ?"Conference: "+ playerInfo.team.conference: null
+
+}
+
+
+
+</div>
+
+<div>
+
+
+
+{
+playerInfo ?"Position: "+ playerInfo.position: null
+
+}
+
+
+
+</div>
+          <div>
+         
+          {
+           playerInfo ? "Height: "+playerInfo.height_feet + ' ' + playerInfo.height_inches: null
+          
+          }
+</div>
+          <div>
+       
+        
+          {
+           playerInfo ? "Weight: " +playerInfo.weight_pounds: null
+          
+          } Pounds
+
+
+          </div>
+
+          </PlayInfoDiv>
         <RowContainer>
 
-        
+        <PlayerFlow>
           <table class="table">
   <thead>
     <tr>
@@ -120,26 +215,36 @@ function Players() {
 
     </tr>
   </thead>
+  
   <tbody>
+  {
+        selectedPlayer &&
     <tr>
-      <th scope="row">{selectedPlayer.ast}</th>
+    
+      <th scope="row">{selectedPlayer.ast}</th> 
       <td>{selectedPlayer.blk}</td>
+      <td>{selectedPlayer.fg3_pct}</td>
+      <td>{selectedPlayer.fg3a}</td>
+      <td>{selectedPlayer.fg3m}</td>
+      <td>{selectedPlayer.fg_pct}</td>
+      <td>{selectedPlayer.fgm}</td>
+      <td>{selectedPlayer.ft_pct}</td>
+      <td>{selectedPlayer.fta}</td>
+      <td>{selectedPlayer.ftm}</td>
+      <td>{selectedPlayer.games_played}</td>
+      <td>{selectedPlayer.pf}</td>
+      <td>{selectedPlayer.pts}</td>
+      <td>{selectedPlayer.reb}</td>
+      <td>{selectedPlayer.stl}</td>
+      <td>{selectedPlayer.turnover}</td> 
       
-      <td>{selectedPlayer.ast}</td>
-      <td>{selectedPlayer.ast}</td>
-      <td>{selectedPlayer.ast}</td>
-
-      <td>{selectedPlayer.ast}</td>
-      <td>{selectedPlayer.ast}</td>
-      <td>{selectedPlayer.ast}</td>
-      <td>{selectedPlayer.ast}</td>
-      <td>{selectedPlayer.ast}</td>
-      <td>{selectedPlayer.ast}</td>
-    </tr>
- 
+        
+  </tr>
+}
  
   </tbody>
 </table>
+</PlayerFlow>
 
             <h1><Link to="/">Go to Homepage</Link>   </h1>         
     
@@ -162,7 +267,7 @@ function Players() {
         </RowContainer>
       
         
-</>
+</MiddleContent>
 
     );
 

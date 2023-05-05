@@ -60,7 +60,7 @@ function PlayerCard({playerInfo}) {
             <>
          
 
-      <Card style={{ width: '18rem', marginBottom: "2.5%" }}>
+      <Card style={{ width: '18rem', marginBottom: "2.5%", height: "150px" }}>
       <Card.Body>
       <Link to={`/${playerInfo.id}`}>
         <Card.Title>{playerInfo.first_name + ' ' + playerInfo.last_name}</Card.Title>

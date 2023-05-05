@@ -69,6 +69,7 @@ width: 90%;
 height:100vh;
 flex-wrap: wrap;
 overflow-y: scroll;
+
 border: 1px solid black;
 `
 
