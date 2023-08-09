@@ -1,1 +1,1 @@
-NBA App done using react
+I created an NBA app using React and the Ball Don't Lie API, offering basketball enthusiasts real-time access to player statistics, game schedules, and team information. Users can effortlessly track their favorite players' performance, stay updated on upcoming matches, and delve into comprehensive team details, enhancing their overall NBA experience. With an intuitive interface and dynamic data integration, my app brings the excitement of the NBA closer to fans' fingertips.
